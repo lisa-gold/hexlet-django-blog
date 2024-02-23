@@ -8,7 +8,11 @@
 {% endblock %}
 
 {% block content %}
-<h2>Articles</h2>
-<p>Статья номер {{ article_id }}</p>
-<p>Тег {{ tags }}</p>
+<h2>List of articles</h2>
+
+{% for article in articles %}
+<a href="/articles/{{article.id}}"><h3>{{ article.name }}</h3></a>
+<div>{{ article.body|slice:":200" }}</div>
+{% endfor %}
+
 {% endblock %}
