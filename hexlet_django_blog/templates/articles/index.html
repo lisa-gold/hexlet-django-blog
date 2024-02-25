@@ -9,10 +9,15 @@
 
 {% block content %}
 <h2>List of articles</h2>
-
+<button><a href="/articles/create">Add a new article</a></button>
 {% for article in articles %}
 <a href="/articles/{{article.id}}"><h3>{{ article.name }}</h3></a>
 <div>{{ article.body|slice:":200" }}</div>
 {% endfor %}
 
 {% endblock %}
+
+{% url 'category_detail' article.category %}
+/categories/{{ article.category.id }}
+{% url 'articles_detail' article.id %}
+/articles/{{ article.id }}
