@@ -8,11 +8,18 @@
 {% endblock %}
 
 {% block content %}
+
 <h2>List of articles</h2>
 <button><a href="/articles/create">Add a new article</a></button>
 {% for article in articles %}
 <a href="/articles/{{article.id}}"><h3>{{ article.name }}</h3></a>
 <div>{{ article.body|slice:":200" }}</div>
+<a href="/articles/{{article.id}}/edit">Edit</a>
+
+<form action="{% url 'articles_delete' article.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit"  value="Удалить">
+</form>
 {% endfor %}
 
 {% endblock %}
